@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Patient Verification</title>
+  <style>
+    body {
+      background-color: #e0f2fd;
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+    h1 {
+      font-size: 30px;
+      color: #004080;
+      margin-bottom: 30px;
+    }
+    .buttons button {
+      font-size: 20px;
+      padding: 12px 24px;
+      margin: 10px;
+      border-radius: 10px;
+      border: none;
+      background-color: #0074d9;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h1 id="message">Loading...</h1>
+
+  <div class="buttons">
+    <button onclick="goBack()">Back</button>
+    <button onclick="confirm()">Confirm</button>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const name = params.get("name");
+    const mrn = params.get("mrn");
+
+    document.getElementById("message").textContent = `Are you ${name} and your MRN number is ${mrn}?`;
+
+    function goBack() {
+      window.history.back();
+    }
+
+    function confirm() {
+      window.location.href = "receipt.html?name=" + name + "&mrn=" + mrn;
+    }
+  </script>
+
+</body>
+</html>
